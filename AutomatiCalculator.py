@@ -1,3 +1,5 @@
+# This program will automatically calculate the sum, subtract, multiplication, and division of the 2 numbers
+
 class calculator:
     def __init__(self, number1, number2):
         self.number1 = number1
