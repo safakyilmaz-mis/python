@@ -17,7 +17,7 @@ for i in range(len(listFolders)):
 
 textFile.write("\n--------------------------")
 textFile.write("\nFiles size: ")
-textFile.write(str(boyut)+" byte")
+textFile.write(str(size)+" byte")
 
 textFile.close()
 shutil.move("results.txt",".\\results")
