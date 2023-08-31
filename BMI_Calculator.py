@@ -6,10 +6,8 @@ H = float(input("Enter your height (enter meter e.g. 1.75): "))
 W = int(input("Enter your weight: "))
 #   getting information about weight
 
-Total = W/(H*H)
+Total = round(W/(H*H),2)
 #   calculation
-
-Total = round(Total, 2)
 #   we want to limit our result 2 digits after int number
 
 print("Your BMI is: "+str(Total))
