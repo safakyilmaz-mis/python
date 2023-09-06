@@ -23,7 +23,7 @@ elif Total < 30:
     print("You have overweight")
 elif Total < 35:
     print("You have obese")
-elif Total > 35:
+else:
     print("You are clinically obese")
     
 #V2.0 adding new comments
