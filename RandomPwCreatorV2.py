@@ -9,21 +9,31 @@ nr_letters= int(input("How many letters would you like in your password?\n"))
 nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-
 #Hard Level - Order of characters randomized:
-#e.g. 4 letter, 2 symbols, 2 number = g^2jk8&P
+#e.g. 4 letters, 2 symbols, 2 numbers = g^2jk8&P
 
 value = ["letters", "numbers", "symbols"]
 len_password = nr_letters + nr_numbers + nr_symbols
-password = ""
+password = []
+
+l = 0
 for l in range(1,len_password+1):
-    random_value = random.choice(value)
-    match random_value:
-        case "letters":
-            password += random.choice(letters)
-        case "numbers":
-            password += random.choice(numbers)
-        case "symbols":
-            password += random.choice(symbols)
-            
-print(password)
+    if nr_letters != 0:
+        password += random.choice(letters)
+        nr_letters -= 1
+    elif nr_numbers != 0:
+        password += random.choice(numbers)
+        nr_numbers -= 1
+    elif nr_symbols != 0:
+        password += random.choice(symbols)
+        nr_symbols -= 1
+
+random.shuffle(password) #Randomize the order of characters within each category 
+
+passText = ""
+for x in range(len(password)):
+    passText += password[x]
+print(passText)
+
+#or for loop can also written like that
+#[print(totalPass) for x in password]
