@@ -1,5 +1,5 @@
 import os
-from art import logo
+from art2 import logo
 
 print(logo+"\nWelcome to the secret auction program.")
 name = input("What is your name?: ")
