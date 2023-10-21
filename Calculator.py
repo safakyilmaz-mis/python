@@ -20,12 +20,12 @@ while try_again == True:
             "*":"multiplication",
             "/":"divide"}
     
-    number1 = int(input("Enter first value: "))
+    number1 = float(input("Enter first value: "))
     print("")
     for symbol in operations:
         print(f"for {operations[symbol]}: {symbol}")
     operation = input("Which operator do you want to choose? : ")
-    number2 = int(input("\nEnter second value: "))
+    number2 = float(input("\nEnter second value: "))
 
     answer = {"plus": plus(number1,number2),
             "minus":minus(number1,number2),
