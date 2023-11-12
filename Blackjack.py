@@ -27,30 +27,27 @@ def PC_cardDecision(userHandTotal, PChandTotal):
     return False
     
 def BlackJack():
-    userHand = []
-    PCHand = []
     userHand = selectCards()
     PCHand = selectCards()
-    print(userHand)
-    print(PCHand[1])
-
-    moreCard = "yes"
-    while moreCard == "yes":
+    print(f"{userName}'s hand: {userHand}")
+    print(f"PC hand: {PCHand}")
+    
+    while sum(userHand) < 21:
         moreCard = input("Do you want card?: ").lower()
         if moreCard == "yes":    
             userHand.append(random.choice(cards))
             elevenToOne(userHand)
             print(userHand)
             print(PCHand[1])
+            
         else:
             break
-            
     while PC_cardDecision(userHand,PCHand):
         PCHand.append(random.choice(cards))
         elevenToOne(PCHand)
             
-    print(userHand)
-    print(PCHand)
+    print(f"{userName}'s hand: {userHand}")
+    print(f"PC hand: {PCHand}")
         
     result = isBlackJack(userHand, PCHand)
     if result is True:
