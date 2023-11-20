@@ -1,4 +1,5 @@
 import random
+from art import logo
 
 MODE = 0
 def guess_number():
@@ -22,7 +23,7 @@ def life_counter(MODE):
         return 9
 
 def Play_again():
-    play_again = input("Do you want to play again? Type 'yes' or 'no': ")
+    play_again = input("\nDo you want to play again? Type 'yes' or 'no': ")
     if play_again == "no":
         return "Bye!"
     elif play_again == "yes":
@@ -31,23 +32,26 @@ def Play_again():
       
 while True:
     Guess_number = guess_number()
+    print(logo)
     print("Welcome to the Number Guessing game!")
     print("I'm thinking of a number between 1 and 100")
     MODE = input("Choose difficulty. Type 'easy' or 'hard': ") 
     print(mode(MODE))
-    guess = int(input("Make a guess: "))
+    guess = int(input("\nMake a guess: "))
     life = life_counter(MODE)
-    while(guess != Guess_number):  
+    while(guess != Guess_number): 
         if life == 0:
-            print(f"Game over you finished all of your attemps.\nCorrect answer was '{Guess_number}'")
+            print(f"\nGame over you finished all of your attemps.\nCorrect answer was '{Guess_number}'")
             break
         if guess < Guess_number:
-            print("Too low. \n Guess again.")
+            print("Too low. \nGuess again.")
             life -= 1
+            print(f"\nYou have {life+1} attemps remaining to guess the number.")
             guess = int(input("Guess again: "))
         if guess > Guess_number:
-            print("Too high. \n Guess again.")
+            print("Too high. \nGuess again.")
             life -= 1
+            print(f"\nYou have {life+1} attemps remaining to guess the number.")
             guess = int(input("Guess again: "))
     if guess == Guess_number:
         print("Perfect, you guessed correct.")
