@@ -27,7 +27,7 @@ def play_blackjack(user):
     player_hand = get_initial_hand()
     pc_hand = get_initial_hand()
 
-    print(f"{user}'s initial hand: {player_hand}")
+    print(f"\n{user}'s initial hand: {player_hand}")
     print(f"PC's initial hand: {pc_hand[1]}")
 
     while sum(player_hand) < 21:
@@ -41,7 +41,7 @@ def play_blackjack(user):
         if more_card == "yes":
             player_hand.append(random.choice(cards))
             adjust_ace_value(player_hand)
-            print(f"{user}'s hand: {player_hand}")
+            print(f"\n{user}'s hand: {player_hand}")
         else:
             break
 
@@ -49,7 +49,7 @@ def play_blackjack(user):
         pc_hand.append(random.choice(cards))
         adjust_ace_value(pc_hand)
 
-    print(f"{user}'s final hand: {player_hand}")
+    print(f"\n{user}'s final hand: {player_hand}")
     print(f"PC's final hand: {pc_hand}")
 
     result = blackjack_winner(player_hand, pc_hand, user)
