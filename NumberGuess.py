@@ -1,5 +1,4 @@
 import random
-from art import logo
 
 MODE = 0
 def guess_number():
@@ -32,7 +31,6 @@ def Play_again():
       
 while True:
     Guess_number = guess_number()
-    print(logo)
     print("Welcome to the Number Guessing game!")
     print("I'm thinking of a number between 1 and 100")
     MODE = input("Choose difficulty. Type 'easy' or 'hard': ") 
