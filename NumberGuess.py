@@ -30,10 +30,11 @@ def attempt(mode):
         print("wrong answer for mode selection please restart again")
         
 def life_counter(mode):
-    if mode == "easy":
-        return 9
-    elif mode == "hard":
+    if mode == "hard":
         return 4
+    elif mode == "easy":
+        return 9
+    
 
 def main():
     Guess_number = guess_number()
