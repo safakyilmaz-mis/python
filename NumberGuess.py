@@ -8,20 +8,28 @@ def guess_number():
 def mode(MODE):
     if MODE == "easy":
         return f"You have {life_counter(MODE)+1} attemps remaining to guess the number."
-        
+
     elif MODE == "hard":
         return f"You have {life_counter(MODE)+1} attemps remaining to guess the number."
-        
+
     else:
         return "wrong answer for mode selection please restart again"
-                
+
 def life_counter(MODE):
     if MODE == "hard":
         return 4
     elif MODE == "easy":
         return 9
 
-def main():
+def Play_again():
+    play_again = input("Do you want to play again? Type 'yes' or 'no': ")
+    if play_again == "no":
+        return "Bye!"
+    elif play_again == "yes":
+        return "yes"
+    
+      
+while True:
     Guess_number = guess_number()
     print("Welcome to the Number Guessing game!")
     print("I'm thinking of a number between 1 and 100")
@@ -43,5 +51,6 @@ def main():
             guess = int(input("Guess again: "))
     if guess == Guess_number:
         print("Perfect, you guessed correct.")
-        
-main()
+    if Play_again() == "Bye!":
+        print("Bye!")
+        break
