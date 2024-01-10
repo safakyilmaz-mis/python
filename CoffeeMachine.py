@@ -46,16 +46,17 @@ def money():
 
 def report():
     report_result = ""
-    report_result += str("coffee:" + str(resources["coffee"]) + "gr" + "\n")
-    report_result += str("milk:" + str(resources["milk"]) + "ml" + "\n")
-    report_result += str("water:" + str(resources["water"]) + "ml")
+    report_result += str("coffee:" + str(resources["coffee"]) + "gr\n")
+    report_result += str("milk:" + str(resources["milk"]) + "ml\n")
+    report_result += str("water:" + str(resources["water"]) + "ml\n")
+    report_result += str("profit: $") + str(profit)
 
     print(report_result)
 
 
 drink = "on"
 while True and drink != "off":
-    drink = input("What would you like? (espresso/latte/cappuccino): ")
+    drink = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if drink == "report":
         report()
 
