@@ -1,5 +1,6 @@
 import turtle
 import pandas
+#you should install the pandas module to work on the pandas projects
 
 screen = turtle.Screen()
 screen.title("U.S. Guess Game")
