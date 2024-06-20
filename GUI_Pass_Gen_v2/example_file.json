@@ -1,0 +1,20 @@
+#this file wont work with code this is just example how output will be
+
+{
+    "amazon": {
+        "email": "safakyilmaz@gmail.com",
+        "password": "*etN$fnQOX(6!qZ2"
+    },
+    "facebook": {
+        "email": "safakyilmaz@gmail.com",
+        "password": "(u5&SObh&NJAn5)"
+    },
+    "instagram": {
+        "email": "safakyilmaz@gmail.com",
+        "password": "hL*S7&A6Evb)AdI"
+    },
+    "myspace": {
+        "email": "safakyilmaz@gmail.com",
+        "password": "6!2&hTE4ToOMBn"
+    }
+}
