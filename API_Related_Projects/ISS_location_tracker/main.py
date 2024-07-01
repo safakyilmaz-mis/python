@@ -7,8 +7,8 @@ MY_LAT =  # Your latitude
 MY_LONG =   # Your longitude
 text = "hey look up iss is going over from your city!"
 neg_text = "nope iss is even not close to your city"
-email = "safakyilmaz.g@gmail.com"
-password = "fcwdwmbeckdnfnfu"
+email = "YOUUR EMAIL ADRESS"
+password = "YOUR PASSWORD"
 
 response = requests.get(url="http://api.open-notify.org/iss-now.json")
 response.raise_for_status()
@@ -42,20 +42,20 @@ while True:
                 connection.starttls()
                 connection.login(email, password)
                 connection.sendmail(from_addr=email,
-                                    to_addrs="safak.yilmaz@atos.net",
+                                    to_addrs="YOUUR EMAIL ADRESS",
                                     msg=f"subject:ISS is on your city. Look up!\n\n{text}")
         else:
             with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
                 connection.starttls()
                 connection.login(email, password)
                 connection.sendmail(from_addr=email,
-                                    to_addrs="safak.yilmaz@atos.net",
+                                    to_addrs="YOUUR EMAIL ADRESS",
                                     msg=f"subject:ISS is far away from your city\n\n{neg_text}")
     else:
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(email, password)
             connection.sendmail(from_addr=email,
-                                to_addrs="safak.yilmaz@atos.net",
+                                to_addrs="YOUUR EMAIL ADRESS",
                                 msg=f"subject:Daytime Error\n\n{"you are in daytime you cant see ISS now!"}")
     time.sleep(60)
