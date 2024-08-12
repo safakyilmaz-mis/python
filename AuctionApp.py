@@ -24,3 +24,5 @@ if next_person == "no":
             auction[0]["name"] = auction[i]["name"]
             auction[0]["bid"] = auction[i]["bid"]
     print(f"The winner is {auction[0]["name"]} ${auction[0]["bid"]}")
+
+# print(auction)
