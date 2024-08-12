@@ -69,7 +69,7 @@ with open('dictionary_maze.json', 'a', encoding='utf-8') as f:
     json.dump(dict_maze, f, ensure_ascii=False, indent=4)
 
 
-client = pymongo.MongoClient('mongodb://root:p2f9FXGxhdmPtEp8rmOv6ykKm0v8i1FNTmBWUqcDk9O0BiDsAzlDdQCLYQKuFc4R@95.217.39.116:5424/?directConnection=true')
+client = pymongo.MongoClient('mongodb://username:password@host:port/?directConnection=true')
 db = client.db.quotes
 try:
     db.insert_many(dict_maze)
