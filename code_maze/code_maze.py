@@ -70,8 +70,8 @@ while True:
         break
 
 # MongoDB connection
-client = pymongo.MongoClient('mongodb+srv://safakyilmaz:yAmLCoUPLrWM1LCe@denememaze.eb4jt.mongodb.net/')
-db = client['code_maze_all_pages']  # Replace with your database name
+client = pymongo.MongoClient('mongodb://root:p2f9FXGxhdmPtEp8rmOv6ykKm0v8i1FNTmBWUqcDk9O0BiDsAzlDdQCLYQKuFc4R@95.217.39.116:5424/?directConnection=true')
+db = client['code_maze_all_pages_final']  # Replace with your database name
 collection = db['contents']  # Replace with your collection name
 
 # Insert scraped data into MongoDB
