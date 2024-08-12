@@ -5,6 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 import time
 import json
+import pymongo
 
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
@@ -66,3 +67,12 @@ while True:
 dict_maze = {titles[i]: [photos[i], shrt_des[i], links[i]] for i in range(len(links))}
 with open('dictionary_maze.json', 'a', encoding='utf-8') as f:
     json.dump(dict_maze, f, ensure_ascii=False, indent=4)
+
+
+client = pymongo.MongoClient('mongodb://root:p2f9FXGxhdmPtEp8rmOv6ykKm0v8i1FNTmBWUqcDk9O0BiDsAzlDdQCLYQKuFc4R@95.217.39.116:5424/?directConnection=true')
+db = client.db.quotes
+try:
+    db.insert_many(dict_maze)
+    print(f'inserted {len(dict_maze)} articles')
+except:
+    print('an error occurred quotes were not stored to db')
