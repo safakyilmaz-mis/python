@@ -13,7 +13,6 @@ LONG_BREAK_MIN = 20
 reps = 0
 app_time = None
 
-
 def reset_timer():
     global reps
     windows.after_cancel(app_time)
