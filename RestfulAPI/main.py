@@ -1,3 +1,4 @@
+import random
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -49,9 +50,34 @@ with app.app_context():
 @app.route("/")
 def home():
     return render_template("index.html")
+    
 
 
 # HTTP GET - Read Record
+# @app.route("/random", methods=["GET"])
+# def random_cafe():
+#     pass
+
+@app.route("/random", methods=["GET"])
+def random_cafe():
+    cafes = Cafe.query.all()
+    cafes_list = []
+    for cafe in cafes:
+        cafe_data = {
+            'id': cafe.id,
+            'name': cafe.name,
+            'map_url': cafe.map_url,
+            'img_url': cafe.img_url,
+            'location': cafe.location,
+            'seats': cafe.seats,
+            'has_toilet': cafe.has_toilet,
+            'has_wifi': cafe.has_wifi,
+            'has_sockets': cafe.has_sockets,
+            'can_take_calls': cafe.can_take_calls,
+            'coffee_price': cafe.coffee_price,
+        }
+        cafes_list.append(cafe_data)
+    return cafes_list[1]
 
 # HTTP POST - Create Record
 
