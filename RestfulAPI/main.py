@@ -19,6 +19,7 @@ pip3 install -r requirements.txt
 This will install the packages from requirements.txt for this project.
 '''
 
+
 app = Flask(__name__)
 
 # CREATE DB
