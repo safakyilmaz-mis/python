@@ -2,12 +2,15 @@ import random
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
+
 def get_initial_hand():
     return [random.choice(cards), random.choice(cards)]
+
 
 def adjust_ace_value(hand):
     if sum(hand) > 21 and 11 in hand:
         hand[hand.index(11)] = 1
+
 
 def blackjack_winner(player_hand, pc_hand, user):
     if sum(player_hand) == 21:
@@ -16,12 +19,14 @@ def blackjack_winner(player_hand, pc_hand, user):
         return "PC, BlackJack, PC won."
     return None
 
+
 def pc_decide_to_draw(pc_hand, user_hand):
     if sum(pc_hand) < 17:
         return True
     if sum(user_hand) <= 21 and sum(pc_hand) < sum(user_hand):
         return True
     return False
+
 
 def play_blackjack(user):
     player_hand = get_initial_hand()
