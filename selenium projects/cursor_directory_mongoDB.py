@@ -73,3 +73,4 @@ finally:
     client.close()
     # Tarayıcıyı kapat
     driver.quit()
+ 
