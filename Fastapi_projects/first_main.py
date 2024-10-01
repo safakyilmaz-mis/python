@@ -1,15 +1,13 @@
+from typing import Optional
 from fastapi import FastAPI
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {'message: hello Safak'}, 200
+    return {"messagee":"Heello Safak"}
 
-@app.get("/about")
-async def about():
-    return {'message: about page'}, 200
+@app.get("/about/{aaa}")
+async def about_us(aaa, name: Optional[str] = "User", age: Optional[int] = 0) -> dict:
+    return {"message":f"{aaa}, Hello {name}, you are {age} years old"}
 
-@app.get("/contact")
-async def contact():
-    return {'message: contact page'}, 200
