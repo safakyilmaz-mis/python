@@ -18,6 +18,23 @@ driver.get("https://www.linkedin.com/search/results/CONTENT/")
 
 time.sleep(5)
 
-search_button = driver.find_element(By.XPATH, '//*[@id="global-nav-typeahead"]/input')
-search_button.click()
+email = driver.find_element(By.XPATH, '//*[@id="username"]')
+email.click()
+
+email.send_keys('xxxxxx@gmail.com')
+
+password = driver.find_element(By.XPATH, '//*[@id="password"]')
+password.click()
+password.send_keys('xxxxxx')
+
+login = driver.find_element(By.XPATH, '//*[@id="organic-div"]/form/div[4]/button')
+login.click()
+
+input("Press Enter to close the browser...")
+
+# The browser will only close after you press Enter in the console
+driver.quit()
+
+# search_button = driver.find_element(By.XPATH, '//*[@id="global-nav-typeahead"]/input')
+# search_button.click()
 
