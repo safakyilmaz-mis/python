@@ -26,10 +26,10 @@ driver.get("https://www.linkedin.com/search/results/CONTENT/")
 email = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.ID, "username"))
 )
-email.send_keys('xxxxx@gmail.com')
+email.send_keys('sarduc891@gmail.com')
 
 password = driver.find_element(By.ID, 'password')
-password.send_keys('xxxxx')
+password.send_keys('12501250')
 
 login = driver.find_element(By.XPATH, '//button[@type="submit"]')
 login.click()
