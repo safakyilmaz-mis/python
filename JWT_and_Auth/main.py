@@ -1,55 +1,23 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.security import OAuth2PasswordRequestForm
 
 app = FastAPI()
 
-# Mock database of crew members with nested equipment data
-crew = [
-    {
-        "id": 1,
-        "name": "Cosmo", "role": "Captain", "experience": 10,
-        "equipment": [
-            {"name": "Helmet", "status": "Good"},
-            {"name": "Suit", "status": "Needs Repair"}
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Alice", "role": "Engineer", "experience": 8,
-        "equipment": [
-            {"name": "Toolkit", "status": "Good"}
-        ]
-    },
-]
+# Mock database with usernames and passwords
+users_db = {"user1": "pass1", "user2": "pass2"}
 
 
-# Define a Pydantic model for equipment
-class Equipment(BaseModel):
-    name: str
-    status: str
+# Function to check if user exists in the database
+def authenticate_user(username: str, password: str):
+    # Check if user exists in the mock database
+    if users_db.get(username) == password:
+        return {"username": username}
+    # Raise an HTTP 401 Unauthorized error if credentials are incorrect
+    raise HTTPException(status_code=401, detail="Incorrect username or password")
 
 
-# Define a Pydantic model for the crew member, which includes a list of equipment
-class CrewMember(BaseModel):
-    name: str
-    role: str
-    experience: int
-    equipment: list[Equipment]
-
-
-# Endpoint to read a crew member details by name using GET method, including nested equipment data
-@app.get("/crew/{id}", response_model=CrewMember)
-async def read_crew_member(id: int):
-    for member in crew:
-        if member["id"] == id:
-            return member
-    return {"message": "Crew member not found"}
-
-
-# Endpoint to add a new crew member with nested equipment using POST method
-@app.post("/crew/")
-async def add_crew_member(member: CrewMember):
-    member_id = max(c["id"] for c in crew) + 1 if crew else 1
-    new_member = {"id": member_id, **member.dict()}
-    crew.append(new_member)
-    return {"message": "Crew member added successfully", "member": new_member}
+# Login endpoint
+@app.post("/login")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    # Call the function to authenticate the user
+    return authenticate_user(form_data.username, form_data.password)
