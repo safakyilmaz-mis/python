@@ -15,11 +15,13 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
-# Token class
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+# TODO: Define the Token class with the necessary fields:
+# - access_token (str)
+# - token_type (str)
 
+class Token(BaseModel):
+    access_token:str
+    token_type:str
 
 # Function to create JWT token with an expiration time
 def create_access_token(data: dict):
@@ -42,12 +44,14 @@ def authenticate_user(form_data: OAuth2PasswordRequestForm = Depends()):
     raise HTTPException(status_code=401, detail="Incorrect username or password")
 
 
-# Login endpoint
+# TODO: Implement the login endpoint:
+# 1. Create an endpoint with a POST method at "/login" and set the response model to Token.
 @app.post("/login", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    # Check username and password in database 
-    user = authenticate_user(form_data)
-    # Create an access token
-    access_token = create_access_token(data={"sub": user["username"]})
-    # Return the access token 
-    return {"access_token": access_token, "token_type": "bearer"}
+# 2. Use OAuth2PasswordRequestForm to validate the form data.
+async def login(form_data : OAuth2PasswordRequestForm = Depends()):
+# 3. Authenticate the user using the provided form data.
+    auth = authenticate_user(form_data)
+# 4. Create an access token with the user's username as the subject.
+    token = create_access_token(data={"sub":auth["username"]})
+# 5. Return the access_token and set the token_type to "bearer".
+    return {"access_token":token, "token_type":"bearer"}
