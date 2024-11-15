@@ -18,24 +18,24 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 # TODO: Define the Token class with the necessary fields:
 # - access_token (str)
 # - token_type (str)
-
 class Token(BaseModel):
     access_token:str
     token_type:str
 
-# Function to create JWT token with an expiration time
-def create_access_token(data: dict):
-    # Copy the provided data to avoid modifying the original
-    to_encode = data.copy()
-    # Set the token expiration time
-    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    # Add the expiration time to the token payload
-    to_encode.update({"exp": expire})
-    # Encode the token with the secret key and algorithm
-    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
+# TODO: Implement the function to create JWT token with an expiration time:
+# - Copy the provided data to avoid modifying the original
+# - Set the token expiration time
+# - Add the expiration time to the token payload
+# - Encode the token with the secret key and algorithm, and return it
 
-# Function to check if user exists in the database
+def create_access_token(user_data: dict):
+    user_data = user_data.copy()
+    exp_time = datetime.utcnow() + timedelta(minutes=30)
+    user_data.update({"exp":exp_time})
+    return jwt.encode(user_data,SECRET_KEY,algorithm=ALGORITHM)
+
+# The authenticate_user function is provided and does not need to be written by the user
 def authenticate_user(form_data: OAuth2PasswordRequestForm = Depends()):
     username = form_data.username
     password = form_data.password
@@ -46,12 +46,13 @@ def authenticate_user(form_data: OAuth2PasswordRequestForm = Depends()):
 
 # TODO: Implement the login endpoint:
 # 1. Create an endpoint with a POST method at "/login" and set the response model to Token.
-@app.post("/login", response_model=Token)
 # 2. Use OAuth2PasswordRequestForm to validate the form data.
-async def login(form_data : OAuth2PasswordRequestForm = Depends()):
 # 3. Authenticate the user using the provided form data.
-    auth = authenticate_user(form_data)
 # 4. Create an access token with the user's username as the subject.
-    token = create_access_token(data={"sub":auth["username"]})
 # 5. Return the access_token and set the token_type to "bearer".
-    return {"access_token":token, "token_type":"bearer"}
+
+@app.post("/login",response_model=Token)
+async def login(user_data : OAuth2PasswordRequestForm = Depends()):
+    auth = authenticate_user(user_data)
+    token_create = create_access_token({"sub":auth["username"]})
+    return {"access_token":token_create, "token_type":"bearer"}
