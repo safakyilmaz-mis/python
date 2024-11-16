@@ -31,7 +31,7 @@ class Token(BaseModel):
 
 def create_access_token(user_data: dict):
     user_data = user_data.copy()
-    exp_time = datetime.utcnow() + timedelta(minutes=30)
+    exp_time = datetime.now() + timedelta(minutes=30)
     user_data.update({"exp":exp_time})
     return jwt.encode(user_data,SECRET_KEY,algorithm=ALGORITHM)
 
