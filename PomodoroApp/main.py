@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
 import math
+import os
 
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -66,7 +67,7 @@ windows.title("Pomodoro App")
 windows.config(padx=50, pady=0, bg=YELLOW)
 
 canvas = Canvas(width=205, height=224, bg=YELLOW, highlightthickness=0)
-photo = PhotoImage(file="tomato.png")
+photo = PhotoImage(file=os.path.join(os.path.dirname(__file__), "tomato.png"))
 canvas.create_image(102, 112, image=photo)
 
 Timer_text = canvas.create_text(100, 130, text="00:00", fill="White", font=(FONT_NAME, 35, "bold"))

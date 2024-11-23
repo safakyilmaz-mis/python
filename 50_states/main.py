@@ -1,14 +1,15 @@
 import turtle
 import pandas
+import os
 #you should install the pandas module to work on the pandas projects
 
 screen = turtle.Screen()
 screen.title("U.S. Guess Game")
-image = "blank_states_img.gif"
+image = os.path.join(os.path.dirname(__file__),"blank_states_img.gif")
 screen.addshape(image)
 turtle.shape(image)
 
-states = pandas.read_csv("50_states.csv")
+states = pandas.read_csv(os.path.join(os.path.dirname(__file__),"50_states.csv"))
 state = states["state"].tolist()
 x_loc_states = states["x"].tolist()
 y_loc_states = states["y"].tolist()
@@ -44,5 +45,5 @@ while gameison:
             if i not in correct_states:
                 missing_states.append(i)
         gameison = False
-        pandas.DataFrame(missing_states).to_csv("Missed_States.csv")
+        pandas.DataFrame(missing_states).to_csv(os.path.join(os.path.dirname(__file__), "Missed_States.csv"))
         break
