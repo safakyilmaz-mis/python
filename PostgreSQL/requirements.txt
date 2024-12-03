@@ -1,0 +1,2 @@
+psycopg>=3.2.3
+tzdata>=2024.2  # Required by psycopg
