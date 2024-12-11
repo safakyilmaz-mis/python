@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import *
 import pandas as pd
 
-
 BACKGROUND_COLOR = "#B1DDC6"
 
 root = Tk()
