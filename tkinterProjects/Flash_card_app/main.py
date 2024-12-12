@@ -5,6 +5,7 @@ import pandas as pd
 
 BACKGROUND_COLOR = "#B1DDC6"
 
+
 root = Tk()
 root.title("Flash card app")
 root.config(pady=50, padx=50, bg=BACKGROUND_COLOR)
